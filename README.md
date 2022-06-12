@@ -18,7 +18,7 @@ $ echo -n 'password' | base64
 Secrets are responsible to store sensitive information like usernames, password, tokens, etc.
 
 ```
-$ kubectl apply -f mongot-secret.yaml
+$ kubectl apply -f mongo-secret.yaml
 
 $ kubectl get secret  // You can check if secrets have been created successfully
 ```
