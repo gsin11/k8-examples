@@ -52,4 +52,43 @@ Note: If you won't get message showing-up with your express IP please follow the
 
 `$ minikube service --all` // check your service name and select its IP address and port and open it on browser.
 
+## Namespaces
+These are virtual clusters inside a cluster. Are are 4 out of the box namespaces.
+### kube-system
+We should not use this namespace, since it is being used internally by kubernetes.
+### kube-public
+This namespace is being used to make your nodes public.
+### kube-node-lease
+- It holds information for heartbeats of nodes.
+- each node has associated lease object in namespace.
+- It also determines the *availablity of a node*
+### default
+Last but not least, this namespace holds all nodes which are not having any custom namespace.
+
+*It is better to use custom namespace, it acts like a project inside k8s. It helps you to group your resources. Example: database namespace holds database related resources.*
+
+### Commands
+```
+$ kubectl create namespace my-namepsace // to create namespace
+$ kubectl get namespace // It will show all the namespaces
+```
+
+There is no out of the box way to change default namespace. Perhaps, you can install a package `brew install kubectx` and use following commands to make your own namespace default.
+
+It comes with `kubens` package which will do nothing but list all the namepsace with default hightlight.
+
+By running `kubens my-namespace` you can make `my-namepsace` as a default namespace.
+
+
+## Ingress
+It is not but gives option to expose your application on a particular domain. from `http://12.12.22.1:30000` to `http://my-domain.com`
+
+### Ingress controller
+- Evalute all the rules
+- Manage redirections
+- Entrypoint to cluster
+- Third party integrations
+
+To enable ingress in minikube, perform `minikube addons enable ingress`, it will enable nginx ingress controller.
+
 ### <center>Happy coding</center>
